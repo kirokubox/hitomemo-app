@@ -22,6 +22,9 @@ h2 { margin: 0 0 14px; font-size: 1.14rem; }
 .field small { color: #76685f; }
 input, textarea { width: 100%; border: 1px solid #d8cec2; border-radius: 8px; background: #fff; color: #2f2a24; padding: 12px; min-height: 46px; }
 textarea { resize: vertical; }
+.textarea-compact { min-height: 44px; max-height: 96px; }
+.textarea-medium { min-height: 96px; max-height: 160px; }
+.textarea-long { min-height: 128px; max-height: 220px; }
 input:focus, textarea:focus { outline: 3px solid #ead7bd; border-color: #a97945; }
 .primary, .secondary, .danger, .ghost, .file-button { min-height: 46px; border-radius: 8px; border: 1px solid transparent; padding: 10px 14px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-weight: 700; }
 .primary { width: 100%; background: #6f8f72; color: #fff; }
@@ -42,9 +45,17 @@ input:focus, textarea:focus { outline: 3px solid #ead7bd; border-color: #a97945;
 .memo-list dt { color: #76685f; font-weight: 700; }
 .memo-list dd { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; }
 .memo-list.small { grid-template-columns: minmax(96px, 150px) 1fr; }
+.basic-memo-summary { display: grid; gap: 12px; }
+.profile-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.profile-chip { min-width: 0; border: 1px solid #e3d8cb; border-radius: 8px; background: #fffaf2; padding: 8px 9px; display: grid; gap: 2px; }
+.profile-chip span { color: #76685f; font-size: 0.78rem; font-weight: 700; }
+.profile-chip strong { color: #2f2a24; font-size: 0.94rem; line-height: 1.35; overflow-wrap: anywhere; }
 .conversation-card { margin-bottom: 12px; }
 .conversation-card:last-child { margin-bottom: 0; }
 .conversation-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 12px; }
+.conversation-actions { display: flex; align-items: center; justify-content: flex-end; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+.small-action { min-height: 38px; padding: 7px 12px; font-size: 0.9rem; }
+.conversation-actions .danger { background: #fff8f6; }
 .action-grid { display: grid; gap: 10px; }
 .file-button { position: relative; overflow: hidden; }
 .file-button input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
@@ -62,8 +73,13 @@ input:focus, textarea:focus { outline: 3px solid #ead7bd; border-color: #a97945;
   .detail-head, .conversation-head { display: grid; }
   .button-row { width: 100%; }
   .button-row > button { flex: 1; }
+  .conversation-actions { justify-content: flex-start; }
+  .conversation-actions .small-action { flex: 0 0 auto; min-width: 88px; }
   .memo-list, .memo-list.small { grid-template-columns: 1fr; gap: 2px; }
   .memo-list dd { margin-bottom: 8px; }
+  .profile-grid { gap: 7px; }
+  .profile-chip { padding: 7px 8px; }
+  .profile-chip strong { font-size: 0.9rem; }
 }
 
 .collapsible { padding: 0; overflow: hidden; }
