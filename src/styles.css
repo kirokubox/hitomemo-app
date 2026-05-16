@@ -23,6 +23,7 @@ h2 { margin: 0 0 14px; font-size: 1.14rem; }
 input, textarea, select { width: 100%; border: 1px solid #d8cec2; border-radius: 8px; background: #fff; color: #2f2a24; padding: 12px; min-height: 46px; }
 textarea { resize: vertical; }
 .textarea-compact { min-height: 44px; max-height: 96px; }
+.textarea-conversation { min-height: 44px; max-height: 220px; }
 .textarea-medium { min-height: 96px; max-height: 160px; }
 .textarea-long { min-height: 128px; max-height: 220px; }
 input:focus, textarea:focus, select:focus { outline: 3px solid #ead7bd; border-color: #a97945; }
@@ -90,6 +91,7 @@ input:focus, textarea:focus, select:focus { outline: 3px solid #ead7bd; border-c
 .section-help { margin: 0 0 14px; color: #76685f; }
 .two-column-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-bottom: 14px; }
 .two-column-fields .field { margin-bottom: 0; }
+.basic-attribute-fields { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .job-field { display: grid; gap: 10px; }
 .option-field { min-width: 0; }
 .option-grid { display: flex; flex-wrap: wrap; gap: 6px; margin: -4px 0 14px; }
@@ -99,8 +101,15 @@ input:focus, textarea:focus, select:focus { outline: 3px solid #ead7bd; border-c
 
 @media (max-width: 520px) {
   .two-column-fields { grid-template-columns: 1fr; }
+  .basic-attribute-fields { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .basic-attribute-fields input, .basic-attribute-fields select { padding: 10px; }
+  .basic-attribute-fields .field small { font-size: 0.78rem; line-height: 1.45; }
   .collapse-toggle { padding: 13px 14px; }
   .collapse-body { padding: 0 14px 14px; }
+}
+
+@media (max-width: 360px) {
+  .basic-attribute-fields { grid-template-columns: 1fr; }
 }
 .option-toggle { min-height: 34px; border: 1px solid #d8cec2; border-radius: 8px; background: #fffdf9; color: #5c4c3f; padding: 6px 10px; margin: -4px 0 10px; font-size: 0.88rem; font-weight: 700; }
 .collapsible .notice { box-shadow: none; margin-top: 2px; }

@@ -5,7 +5,7 @@ export function PrivacyNote() {
   return <section className="notice strong"><p>ひとめもは、会話を思い出すための軽いメモアプリです。</p><p>本名・住所・電話番号・メールアドレス・顔写真など、相手を強く特定できる情報は登録しないでください。</p><p>呼び名、関係、性格、好きなこと、苦手なもの、前に話したこと、次に話したいことなど、会話を思い出すための情報だけを残す使い方を想定しています。</p></section>;
 }
 
-type TextareaSize = 'compact' | 'medium' | 'long';
+type TextareaSize = 'compact' | 'medium' | 'long' | 'conversation';
 type PersonTextKey = keyof Pick<Person, 'ageNote' | 'genderNote' | 'heightNote' | 'jobNote' | 'mbtiNote'>;
 
 const ageOptions = ['不明', '10代', '20代前半', '20代後半', '30代前半', '30代後半', '40代', '50代以上'];
@@ -27,6 +27,7 @@ function heightDisplay(value: string) {
 function textareaRows(value: string, size: TextareaSize) {
   const lineCount = Math.max(1, value.split('\n').length);
   if (size === 'compact') return value.trim() ? Math.min(3, lineCount) : 1;
+  if (size === 'conversation') return value.trim() ? Math.min(7, lineCount) : 1;
   if (size === 'medium') return Math.max(3, Math.min(5, lineCount));
   return Math.max(4, Math.min(7, lineCount));
 }
@@ -52,7 +53,7 @@ function JobField({ value, onChange }: { value: string; onChange: (value: string
 }
 
 export function BasicAttributeFields({ values, onChange }: { values: Pick<Person, PersonTextKey>; onChange: (key: PersonTextKey, value: string) => void }) {
-  return <div className="two-column-fields"><SelectField label="年齢" value={values.ageNote} options={ageOptions} onChange={(value) => onChange('ageNote', value)} /><SelectField label="性別" value={values.genderNote} options={genderOptions} onChange={(value) => onChange('genderNote', value)} /><HeightField value={values.heightNote} onChange={(value) => onChange('heightNote', value)} /><JobField value={values.jobNote} onChange={(value) => onChange('jobNote', value)} /><SelectField label="MBTI" value={values.mbtiNote} options={mbtiOptions} onChange={(value) => onChange('mbtiNote', value)} /></div>;
+  return <div className="two-column-fields basic-attribute-fields"><SelectField label="年齢" value={values.ageNote} options={ageOptions} onChange={(value) => onChange('ageNote', value)} /><SelectField label="性別" value={values.genderNote} options={genderOptions} onChange={(value) => onChange('genderNote', value)} /><HeightField value={values.heightNote} onChange={(value) => onChange('heightNote', value)} /><JobField value={values.jobNote} onChange={(value) => onChange('jobNote', value)} /><SelectField label="MBTI" value={values.mbtiNote} options={mbtiOptions} onChange={(value) => onChange('mbtiNote', value)} /></div>;
 }
 
 function MemoRows({ rows }: { rows: [string, string][] }) {
@@ -83,7 +84,7 @@ export function MeetBeforeMemoEditForm({ draft, setDraft, onSave, onCancel }: { 
 
 export function ConversationFields({ value, setValue }: { value: Omit<Conversation, 'id' | 'createdAt' | 'updatedAt'> | Conversation; setValue: React.Dispatch<React.SetStateAction<any>> }) {
   const set = (key: keyof Conversation, next: string) => setValue((current: Conversation) => ({ ...current, [key]: next }));
-  return <><Field label="会った日・話した日" type="date" value={value.metDate} onChange={(next) => set('metDate', next)} /><Field label="場所・場面" value={value.placeNote} onChange={(next) => set('placeNote', next)} /><Field label="話したこと" multiline textareaSize="long" value={value.talkedAbout} onChange={(next) => set('talkedAbout', next)} /><Field label="感じたこと・メモ" multiline textareaSize="long" value={value.memo} onChange={(next) => set('memo', next)} /></>;
+  return <><Field label="会った日・話した日" type="date" value={value.metDate} onChange={(next) => set('metDate', next)} /><Field label="場所・場面" value={value.placeNote} onChange={(next) => set('placeNote', next)} /><Field label="話したこと" multiline textareaSize="conversation" value={value.talkedAbout} onChange={(next) => set('talkedAbout', next)} /><Field label="感じたこと・メモ" multiline textareaSize="conversation" value={value.memo} onChange={(next) => set('memo', next)} /></>;
 }
 
 
