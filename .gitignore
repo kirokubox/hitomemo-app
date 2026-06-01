@@ -16,4 +16,11 @@ pnpm-debug.log*
 *.json.backup
 *backup*.json
 *export*.md
+backup_json/
+backups/
+hitomemo-backup-*.json
+hitomemo-export-*.md
+conversation-log-backup-*.json
+conversation-log-export-*.md
+*.export.md
 tsconfig.tsbuildinfo
