@@ -1,0 +1,16 @@
+{
+  "name": "会話ログ",
+  "short_name": "会話ログ",
+  "description": "人との会話を軽く残し、次に会う前に見返す自分用アプリ",
+  "start_url": ".",
+  "scope": ".",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f7f3ed",
+  "theme_color": "#f7f3ed",
+  "icons": [
+    { "src": "icons/hitomemo-icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/hitomemo-icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/hitomemo-icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
